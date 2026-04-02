@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagmani Ultimate Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') no-repeat center/cover;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+}
+
+.sidebar button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: black;
+    color: cyan;
+    border: 1px solid cyan;
+    cursor: pointer;
+}
+
+/* Main */
+.overlay {
+    flex: 1;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Laptop */
+.laptop {
+    width: 95%;
+    max-width: 900px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 0 60px cyan;
+}
+
+.screen {
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+/* Glow */
+@keyframes glowColor {
+    0% {color: cyan;}
+    25% {color: yellow;}
+    50% {color: pink;}
+    75% {color: lime;}
+    100% {color: cyan;}
+}
+.glow {
+    animation: glowColor 4s infinite;
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* Profile */
+.profile {
+    position: relative;
+}
+.profile img {
+    width: 130px;
+    border-radius: 50%;
+    border: 3px solid cyan;
+}
+
+/* Orbit logos */
+.orbit {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: rotate 8s linear infinite;
+}
+.orbit img {
+    width: 40px;
+    position: absolute;
+}
+.orbit img:nth-child(1){top:0; left:50%;}
+.orbit img:nth-child(2){bottom:0; left:10%;}
+.orbit img:nth-child(3){bottom:0; right:10%;}
+
+@keyframes rotate {
+    from {transform: translateX(-50%) rotate(0deg);}
+    to {transform: translateX(-50%) rotate(360deg);}
+}
+
+/* Typing */
+#typing {
+    margin-top: 20px;
+    min-height: 80px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    background: black;
+    border: 1px solid cyan;
+    color: white;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('skills')">Skills</button>
+    <button onclick="showPage('contact')">Contact</button>
+</div>
+
+<!-- Main -->
+<div class="overlay">
+<div class="laptop">
+<div class="screen">
+
+<div class="profile">
+    <img src="nagmani.jpg">
+
+    <!-- Rotating Logos -->
+    <div class="orbit">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+    </div>
+
+    <h1 class="glow">Developer Nagmani-Yadav</h1>
+</div>
+
+<div id="typing" class="glow"></div>
+
+</div>
+</div>
+</div>
+
+<script>
+function typeText(text) {
+    let i = 0;
+    let box = document.getElementById("typing");
+    box.innerHTML = "";
+    
+    function typing() {
+        if (i < text.length) {
+            box.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 30);
+        }
+    }
+    typing();
+}
+
+function showPage(page) {
+
+    if(page=="about"){
+        typeText("Hello I am Nagmani-Yadav 👋\nI am a professional web developer.\nI am graduated.\nMy home is Bakhtiyarpur 803212, Patna Bihar.\nMy age is 18.\nMy friend is Rajeev Kumar.");
+    }
+
+    if(page=="skills"){
+        typeText("Skills:\nJS, Python, HTML, CSS,\nMS Office, Tally,\nCorelDRAW, Illustrator,\nPremiere Pro, Photoshop");
+    }
+
+    if(page=="contact"){
+        document.getElementById("typing").innerHTML = `
+        <br>
+        <a class="btn" href="tel:9204909834">📞 Call</a>
+        <a class="btn" href="https://wa.me/919204909834">💬 WhatsApp</a>
+        <a class="btn" href="mailto:xhotnagmaniyadav@gmail.com">📧 Gmail</a>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
